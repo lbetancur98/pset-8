@@ -142,24 +142,106 @@ public class Exercises {
 
 	public boolean increasing(int[] numbers) {
 		// write your code here
+		if ( numbers == null || numbers.length < 3) {
+			return false;
+		}
+
+		for(int i = 0 ; i <= numbers.length-3 ; i++){
+			int one = numbers[i];
+			int two = numbers[i+1];
+			int three = numbers[i+2];
+
+			if(one < two && two < three){
+				return true;
+			}
+		}
 		
 		return false;	// default return value to ensure compilation
 	}
 	
 	public boolean everywhere(int[] numbers, int x) {
 		// write your code here
+		if ( numbers == null || numbers.length < 1) {
+			return false;
+		}
+
+		boolean continuity = false;
+
+		for(int i = 0 ; i < numbers.length -2 ; i++){
+			
+			
+
+			
+			if(i == 0){
+				if(numbers[i] == x){
+					continuity = true;
+				} else if (numbers[1] != x){
+					return false;
+				}
+			} else if(numbers[i] == numbers[numbers.length-1]){
+				if(numbers[i] == x){
+					continuity =true;
+				} else if (numbers[i-1] != x){
+					return false;
+				}
+
+			} else if(numbers[i] == x){
+				continuity = true;
+			} else if (numbers[i] != x){
+				if(numbers[i-1] == x || numbers[i+1] == x){
+					continuity = true;
+				} else {
+					return false;
+				}
+			}
+
+
+			
+
+
+
+		}
 		
-		return false;	// default return value to ensure compilation
+		return continuity;	// default return value to ensure compilation
 	}
 	
 	public boolean consecutive(int[] numbers) {
 		// write your code here
-		
+		if ( numbers == null || numbers.length <3) {
+			return false;
+		}
+	
+		for(int i = 0 ; i <= numbers.length-3 ; i++){
+			int one = numbers[i];
+			int two = numbers[i+1];
+			int three = numbers[i+2];
+
+			if(one % 2 == 0 && two % 2 == 0 && three % 2==0){
+				return true;
+			} else if (one % 2 == 1 && two % 2 == 1 && three % 2==1){
+				return true;
+			}
+		}
+
+
 		return false;	// default return value to ensure compilation
 	}
 	
 	public boolean balance(int[] numbers) {
 		// write your code here
+		
+		if ( numbers == null || numbers.length <2) {
+			return false;
+		}
+
+		int[] newOne;
+		newOne = new Int[numbers.length /2];
+		int[] newTwo;
+		newTwo = new Int[numbers.length /2];
+
+		if(numbers.length % 2 == 0){
+
+		}
 		
 		return false;	// default return value to ensure compilation
 	}
