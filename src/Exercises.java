@@ -234,13 +234,28 @@ public class Exercises {
 			return false;
 		}
 
-		int[] newOne;
-		newOne = new Int[numbers.length /2];
-		int[] newTwo;
-		newTwo = new Int[numbers.length /2];
+		int sumFirst = 0;
+		int sumLast =	0;
+		int[] newFirst;
+		int[] newLast;
+		newFirst = new int[numbers.length /2];	
+		newLast = new int[numbers.length /2];
 
-		if(numbers.length % 2 == 0){
+		int counter = 0;
 
+		for(int i = 0 ; i < (numbers.length /2) - 1 ;i++){
+			newFirst[i] = numbers[i];
+			sumFirst += newFirst[i];
+		}
+
+		for( int i = numbers.length / 2 ; i < numbers.length; i++){
+			newLast[counter] = numbers[i];
+			sumLast += newLast[i];
+			counter++;
+		}
+
+		if(sumFirst == sumLast){
+			return true;
 		}
 		
 		return false;	// default return value to ensure compilation
@@ -254,7 +269,8 @@ public class Exercises {
 
 	public static void main(String[] args) 
     { 
-		//System.out.println(endsMeet(new String[] {"one", "two", "three"}, 3));
+		int three = 3/2;
+		System.out.println(three );
 
 	}
 }
