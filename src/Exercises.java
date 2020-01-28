@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Arrays;
 
 public class Exercises {
 
@@ -234,29 +235,11 @@ public class Exercises {
 			return false;
 		}
 
-		int sumFirst = 0;
-		int sumLast =	0;
-		int[] newFirst;
-		int[] newLast;
-		newFirst = new int[numbers.length /2];	
-		newLast = new int[numbers.length /2];
-
-		int counter = 0;
-
-		for(int i = 0 ; i < (numbers.length /2) - 1 ;i++){
-			newFirst[i] = numbers[i];
-			sumFirst += newFirst[i];
-		}
-
-		for( int i = numbers.length / 2 ; i < numbers.length; i++){
-			newLast[counter] = numbers[i];
-			sumLast += newLast[i];
-			counter++;
-		}
-
-		if(sumFirst == sumLast){
-			return true;
-		}
+		for (int i = 0; i < numbers.length - 1; ++i) {
+            if (this.sum(Arrays.copyOfRange(numbers, 0, i + 1)) == this.sum(Arrays.copyOfRange(numbers, i + 1, numbers.length))) {
+                return true;
+            }
+        }
 		
 		return false;	// default return value to ensure compilation
 	}
@@ -264,8 +247,43 @@ public class Exercises {
 	public int clumps(String[] values) {
 		// write your code here
 		
-		return -1;		// default return value to ensure compilation
+		
+		if (values == null) {
+            return -1;
+		}
+		
+		for(int i = 0; i < values.length -1; i++){
+			if(values[i] == null){
+				return -1;
+			}
+		}
+
+		
+        int count = 0;
+        boolean series = false;
+        for (int i = 1; i < values.length; ++i) {
+            final String prev = values[i - 1];
+            final String curr = values[i];
+            if (prev.equals(curr)) {
+                if (!series) {
+                    ++count;
+                }
+                series = true;
+            }
+            else {
+                series = false;
+            }
+        }
+		return count;		// default return value to ensure compilation
 	}
+
+	private int sum(final int[] a) {
+        int sum = 0;
+        for (final int val : a) {
+            sum += val;
+        }
+        return sum;
+    }
 
 	public static void main(String[] args) 
     { 
